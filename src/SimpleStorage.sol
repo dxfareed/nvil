@@ -4,7 +4,9 @@ pragma solidity >=0.8.17;
 
 contract SimpleStorage {
     mapping(address => uint256) StorageWitAdrress;
+
     error UserNotFound();
+    
     address[] NumUsers;
 
     function addFavNum(uint256 _favNum) public {
