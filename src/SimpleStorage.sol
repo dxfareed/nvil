@@ -6,7 +6,7 @@ contract SimpleStorage {
     mapping(address => uint256) StorageWitAdrress;
 
     error UserNotFound();
-    
+
     address[] NumUsers;
 
     function addFavNum(uint256 _favNum) public {
@@ -14,7 +14,7 @@ contract SimpleStorage {
         NumUsers.push(msg.sender);
     }
 
-    function DisplayFavoriteNum() public view onlyOwner returns (uint256) {
+    function DisplayFavoriteNum() public view returns (uint256) {
         return StorageWitAdrress[msg.sender];
     }
 
@@ -25,7 +25,7 @@ contract SimpleStorage {
                 _checkUser = true;
             }
         }
-        if (!_checkUser) {
+        if (StorageWitAdrress[msg.sender] == 0 && !_checkUser) {
             revert UserNotFound();
         }
         _;
